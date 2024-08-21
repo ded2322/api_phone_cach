@@ -68,12 +68,17 @@ docker-compose up --build
 
 ### 2. Разворачиваем без docker
 1. Иметь установленный python 3.11+
-
-2. Установка зависимостей  
+2. **Создание и активация виртуальной среды** (если используется Python)  
 ```bash
-    pip install -r requirements.txt
+python -m venv venv
+source venv/bin/activate  # Для Linux/MacOS
+venv\Scripts\activate  # Для Windows
+```  
+3. Установка зависимостей  
+```bash
+pip install -r requirements.txt
 ```
-3. Запускаем сервер
+4. Запускаем сервер
 ```
 uvicorn core.main:app --port 8000 --reload
 ```
