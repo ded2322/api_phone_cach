@@ -1,18 +1,24 @@
 # Решение Sql задач
 
 1. Решение
+```sql   
 UPDATE full_names
 SET status = (
-  SELECT status 
-  FROM short_names
-  WHERE name = SUBSTRING(full_names.name, 1, LENGTH(full_names.name) - 4)
+  SELECT status   
+  FROM short_names 
+  WHERE name = SUBSTRING(full_names.name, 1, LENGTH(full_names.name) - 4) 
 );
+```
 
 2. Решение
+   
+```sql
 UPDATE full_names
 SET status = short_names.status
 FROM short_names
 WHERE fn.name LIKE sn.name;
+```
+
 
 # **Документация к API**
 
