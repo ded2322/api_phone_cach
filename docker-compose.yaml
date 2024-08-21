@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+
+  redis:
+    image: redis:7
+    container_name: phone_redis
+    ports:
+      - 6739:6739
+
+  phones:
+    image: phones_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: phones_app
+    env_file:
+      - .env
+    depends_on:
+      - redis
+
+    command: sh -c "uvicorn core.main:app --host 0.0.0.0 --port 8000"
+    ports:
+      - 8000:8000
+
+
